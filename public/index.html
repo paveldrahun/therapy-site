@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Гештальт-терапия, работа с парами, группы и супервизия. Варшава и онлайн, русский и украинский язык.">
+<title>Павел Драгун, гештальт-терапия</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,500;1,7..72,300&family=Golos+Text:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#E9ECE7;
+  --surface:#F6F8F4;
+  --band:#DFE4DC;
+  --ink:#1E2925;
+  --muted:#5C6862;
+  --accent:#3D5C4C;
+  --accent-soft:#C9D6CB;
+  --line:#D2D8CF;
+  --focus:#3D5C4C;
+
+  --ff-display:"Literata","Georgia",serif;
+  --ff-body:"Golos Text","Helvetica Neue",system-ui,sans-serif;
+
+  --step--1:0.8125rem;
+  --step-0:1.0625rem;
+  --step-1:1.25rem;
+  --step-2:clamp(1.5rem,2.4vw,1.9rem);
+  --step-3:clamp(2rem,3.6vw,2.9rem);
+  --step-4:clamp(2.6rem,6vw,4.4rem);
+
+  --wrap:1140px;
+  --gutter:clamp(1.25rem,5vw,3rem);
+  --sec:clamp(3.5rem,8vw,6.5rem);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#141A18;
+    --surface:#1C2321;
+    --band:#202825;
+    --ink:#E6EAE5;
+    --muted:#9BA69F;
+    --accent:#93B8A1;
+    --accent-soft:#2C3A33;
+    --line:#2B3430;
+    --focus:#93B8A1;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141A18;
+  --surface:#1C2321;
+  --band:#202825;
+  --ink:#E6EAE5;
+  --muted:#9BA69F;
+  --accent:#93B8A1;
+  --accent-soft:#2C3A33;
+  --line:#2B3430;
+  --focus:#93B8A1;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--ff-body);
+  font-size:var(--step-0);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--ff-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.14}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{
+  font-size:var(--step--1);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;
+}
+
+/* ---------- header ---------- */
+.top{border-bottom:1px solid var(--line);background:var(--paper)}
+.top__in{display:flex;align-items:center;gap:1.5rem;padding-block:1.1rem;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;line-height:1.2;text-decoration:none;margin-right:auto}
+.brand b{font-family:var(--ff-display);font-weight:500;font-size:1.06rem;letter-spacing:.06em}
+.brand span{font-size:var(--step--1);color:var(--muted);letter-spacing:.05em}
+.nav{display:flex;gap:1.4rem;flex-wrap:wrap}
+.nav a{font-size:0.95rem;color:var(--muted);text-decoration:none;padding-block:.2rem;border-bottom:1px solid transparent}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font:inherit;font-size:0.95rem;font-weight:500;text-decoration:none;
+  padding:.72rem 1.4rem;border-radius:2px;border:1px solid var(--accent);
+  background:var(--accent);color:var(--paper);transition:opacity .2s ease;
+}
+.btn:hover{opacity:.86}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--accent);opacity:1}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(2.5rem,6vw,4.5rem) 0}
+.hero__grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(2rem,5vw,4rem);align-items:end}
+.hero h1{font-size:var(--step-4);letter-spacing:-.015em}
+.hero__lead{margin-top:1.6rem;max-width:34ch;color:var(--muted);font-size:var(--step-1);line-height:1.55}
+.hero__actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+.hero__eyebrow{margin-bottom:1.4rem}
+
+.portrait{
+  aspect-ratio:4/5;width:100%;
+  background:
+    linear-gradient(160deg,var(--accent-soft),var(--band));
+  display:grid;place-items:center;text-align:center;padding:1.5rem;
+  border:1px solid var(--line);
+}
+.portrait span{font-size:var(--step--1);color:var(--muted);letter-spacing:.06em;max-width:18ch}
+
+/* horizon band */
+.facts{margin-top:clamp(2.5rem,6vw,4rem);background:var(--band);border-block:1px solid var(--line)}
+.facts__in{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.fact{padding:1.6rem clamp(1rem,2vw,1.6rem);border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{display:block;font-weight:500;font-size:1rem}
+.fact span{display:block;color:var(--muted);font-size:var(--step--1);margin-top:.25rem}
+
+/* ---------- generic section ---------- */
+.sec{padding-block:var(--sec)}
+.sec--surface{background:var(--surface);border-block:1px solid var(--line)}
+.sec__head{display:grid;grid-template-columns:minmax(0,18rem) minmax(0,1fr);gap:clamp(1rem,4vw,3rem);align-items:start;margin-bottom:clamp(2rem,4vw,3rem)}
+.sec__head h2{font-size:var(--step-3);letter-spacing:-.01em}
+.sec__head p{color:var(--muted);max-width:52ch}
+
+/* themes list */
+.themes{display:grid;gap:0}
+.theme{
+  display:grid;grid-template-columns:minmax(0,18rem) minmax(0,1fr);
+  gap:clamp(1rem,4vw,3rem);
+  padding-block:1.5rem;border-top:1px solid var(--line);
+}
+.themes .theme:last-child{border-bottom:1px solid var(--line)}
+.theme h3{font-size:var(--step-1);font-family:var(--ff-body);font-weight:500;line-height:1.4}
+.theme p{color:var(--muted);max-width:58ch}
+
+/* formats */
+.formats{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.format{background:var(--surface);padding:clamp(1.5rem,3vw,2.2rem);display:flex;flex-direction:column;gap:.9rem}
+.sec--surface .format{background:var(--paper)}
+.format h3{font-size:var(--step-2);font-family:var(--ff-display)}
+.format p{color:var(--muted)}
+.format dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:0;font-size:var(--step--1);margin-top:auto;padding-top:.6rem;border-top:1px solid var(--line)}
+.format dt{color:var(--muted)}
+.format dd{margin:0;font-variant-numeric:tabular-nums}
+
+/* steps — genuinely sequential */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.5rem,3vw,2.5rem);counter-reset:s}
+.step{display:flex;flex-direction:column;gap:.6rem}
+.step__n{
+  width:2.1rem;height:2.1rem;border-radius:50%;border:1px solid var(--accent);
+  color:var(--accent);display:grid;place-items:center;font-size:var(--step--1);font-weight:500;
+}
+.step h3{font-family:var(--ff-body);font-weight:500;font-size:var(--step-1)}
+.step p{color:var(--muted)}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+.about__text{display:flex;flex-direction:column;gap:1.1rem;color:var(--muted);max-width:56ch}
+.about__text strong{color:var(--ink);font-weight:500}
+.about blockquote{
+  margin:0;font-family:var(--ff-display);font-style:italic;font-size:var(--step-2);
+  line-height:1.4;color:var(--ink);border-left:2px solid var(--accent);padding-left:1.2rem;
+}
+.note{
+  font-size:var(--step--1);color:var(--muted);border:1px dashed var(--line);
+  padding:.9rem 1rem;background:var(--band);
+}
+
+/* faq */
+.faq{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.5rem,3vw,2.5rem) clamp(2rem,5vw,4rem)}
+.faq h3{font-family:var(--ff-body);font-weight:500;font-size:1.05rem;margin-bottom:.4rem}
+.faq p{color:var(--muted);max-width:48ch}
+
+/* cta */
+.cta{background:var(--accent);color:var(--paper);padding-block:clamp(3rem,6vw,4.5rem)}
+.cta__in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:center}
+.cta h2{font-size:var(--step-3);color:var(--paper)}
+.cta p{color:var(--paper);opacity:.8;margin-top:.9rem;max-width:46ch}
+.cta__links{display:flex;flex-direction:column;gap:.6rem;min-width:15rem}
+.cta__links a{
+  text-decoration:none;border:1px solid rgba(255,255,255,.35);padding:.7rem 1.2rem;
+  display:flex;justify-content:space-between;gap:1rem;font-size:0.95rem;color:var(--paper);
+}
+.cta__links a:hover{background:rgba(255,255,255,.1)}
+
+/* footer */
+.foot{padding-block:2.5rem;border-top:1px solid var(--line)}
+.foot__in{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;font-size:var(--step--1);color:var(--muted)}
+.foot b{font-family:var(--ff-display);font-weight:500;color:var(--ink);letter-spacing:.06em;display:block}
+
+@media (max-width:900px){
+  .hero__grid{grid-template-columns:1fr}
+  .portrait{max-width:22rem;aspect-ratio:1/1}
+  .facts__in{grid-template-columns:repeat(2,1fr)}
+  .fact{border-left:0;border-top:1px solid var(--line);padding-inline:0}
+  .fact:nth-child(2n){padding-left:1.2rem;border-left:1px solid var(--line)}
+  .sec__head,.theme,.about{grid-template-columns:1fr}
+  .formats,.steps,.faq{grid-template-columns:1fr}
+  .cta__in{grid-template-columns:1fr}
+}
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="#top"><b>ПАВЕЛ ДРАГУН</b><span>гештальт-терапевт, супервизор</span></a>
+    <nav class="nav">
+      <a href="#themes">С чем работаю</a>
+      <a href="#formats">Форматы</a>
+      <a href="#about">Обо мне</a>
+      <a href="#start">Как начать</a>
+    </nav>
+    <a class="btn" href="#contacts">Написать</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="eyebrow hero__eyebrow">Гештальт-терапия · Варшава и онлайн</p>
+        <h1>Когда жизнь разделилась на «до» и «после»</h1>
+        <p class="hero__lead">Работаю с теми, кто переехал, потерял привычную опору и заново собирает доверие к себе. Русский и украинский язык, очно в Варшаве и в Zoom.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#contacts">Записаться на знакомство</a>
+          <a class="btn btn--ghost" href="#formats">Как устроена работа</a>
+        </div>
+      </div>
+      <div class="portrait"><span>Здесь будет ваша фотография</span></div>
+    </div>
+
+    <div class="facts">
+      <div class="wrap facts__in">
+        <div class="fact"><b>Варшава и онлайн</b><span>очные встречи и Zoom</span></div>
+        <div class="fact"><b>Русский, украинский</b><span>языки работы</span></div>
+        <div class="fact"><b>Индивидуально, пары, группы</b><span>форматы практики</span></div>
+        <div class="fact"><b>Супервизия</b><span>для коллег и студентов</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="themes">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2>С чем ко мне приходят</h2>
+        <p>Чаще всего — не с одним вопросом, а с состоянием, у которого пока нет названия. Начать можно с любого края: остальное проявится в процессе.</p>
+      </div>
+      <div class="themes">
+        <div class="theme">
+          <h3>Эмиграция и переезд</h3>
+          <p>Жизнь на новом месте, где прежние опоры больше не работают, а новые ещё не выросли. Язык, документы, чужие правила — и усталость, которую не с кем разделить.</p>
+        </div>
+        <div class="theme">
+          <h3>Потеря и горевание</h3>
+          <p>Смерть близкого, разрыв отношений, потеря дома, работы, привычного будущего. Место, где можно горевать столько, сколько нужно, не торопя себя.</p>
+        </div>
+        <div class="theme">
+          <h3>Идентичность и переходные периоды</h3>
+          <p>Вопрос «кто я теперь» — после переезда, смены профессии, конца отношений, рождения ребёнка. Когда старое описание себя больше не подходит.</p>
+        </div>
+        <div class="theme">
+          <h3>Доверие себе</h3>
+          <p>Когда перестаёшь понимать, чего хочешь, и решения принимает кто-то другой внутри. Возвращаем способность опираться на собственные чувства и выбор.</p>
+        </div>
+        <div class="theme">
+          <h3>Отношения и границы</h3>
+          <p>Близость и зависимость, умение говорить «нет» и при этом оставаться в контакте. Повторяющиеся сценарии, из которых не получается выйти в одиночку.</p>
+        </div>
+        <div class="theme">
+          <h3>Тревога и неопределённость</h3>
+          <p>Когда невозможно планировать, а тело всё время в готовности. Ищем, на что опереться, когда внешние обстоятельства не поддаются контролю.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--surface" id="formats">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2>Форматы работы</h2>
+        <p>Формат подбираем на первой встрече — иногда достаточно индивидуальной работы, иногда к ней стоит добавить группу.</p>
+      </div>
+      <div class="formats">
+        <article class="format">
+          <h3>Индивидуальная терапия</h3>
+          <p>Регулярные встречи один на один. Разбираемся, как устроен ваш способ обходиться с собой и с другими, и что мешает жить так, как хочется. Без советов и оценок — через внимание к тому, что происходит здесь и сейчас.</p>
+          <dl>
+            <dt>Длительность</dt><dd>50–60 минут</dd>
+            <dt>Частота</dt><dd>раз в неделю</dd>
+            <dt>Формат</dt><dd>очно / Zoom</dd>
+          </dl>
+        </article>
+        <article class="format">
+          <h3>Работа с парами</h3>
+          <p>Не о том, кто прав, а о том, как вы устроены вдвоём: где разговор обрывается, что каждый защищает, как возвращается способность слышать друг друга. Работаем с обоими партнёрами.</p>
+          <dl>
+            <dt>Длительность</dt><dd>80–90 минут</dd>
+            <dt>Частота</dt><dd>раз в 1–2 недели</dd>
+            <dt>Формат</dt><dd>очно / Zoom</dd>
+          </dl>
+        </article>
+        <article class="format">
+          <h3>Терапевтические группы</h3>
+          <p>Закрытая группа — место, где отношения с другими можно не только обсуждать, но и проживать. Особенно поддерживает тех, кто после переезда остался без привычного круга.</p>
+          <dl>
+            <dt>Длительность</dt><dd>2,5–3 часа</dd>
+            <dt>Частота</dt><dd>раз в 2 недели</dd>
+            <dt>Набор</dt><dd>по собеседованию</dd>
+          </dl>
+        </article>
+        <article class="format">
+          <h3>Супервизия</h3>
+          <p>Для практикующих терапевтов и студентов: разбор случаев, работа с трудностями контакта, поддержка профессиональной опоры. Индивидуально или в малой группе.</p>
+          <dl>
+            <dt>Длительность</dt><dd>60 минут</dd>
+            <dt>Формат</dt><dd>индивидуально / группа</dd>
+            <dt>Язык</dt><dd>русский, украинский</dd>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="about">
+    <div class="wrap about">
+      <div>
+        <p class="eyebrow" style="margin-bottom:1rem">Обо мне</p>
+        <blockquote>Терапия не возвращает прежнюю жизнь. Она помогает обжить ту, которая есть.</blockquote>
+      </div>
+      <div class="about__text">
+        <p><strong>Я гештальт-терапевт и супервизор.</strong> Веду частную практику в Варшаве и онлайн, работаю на русском и украинском языках — преимущественно с людьми, которые оказались в эмиграции.</p>
+        <p>Мне близка идея, что человек не «сломался» и его не нужно чинить. Гораздо чаще то, что мешает, когда-то было лучшим доступным способом справиться. В терапии мы рассматриваем этот способ вместе — медленно, с уважением к тому, как он сложился, — и находим, что можно делать иначе.</p>
+        <p>Кроме индивидуальной работы веду группы и супервизирую коллег.</p>
+        <p class="note">Здесь стоит добавить абзац о вашем образовании: институт, программа, год выпуска, супервизорская подготовка, участие в профессиональном сообществе.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--surface" id="start">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2>Как начать</h2>
+        <p>Первый шаг занимает пару минут и ни к чему не обязывает.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n">1</div>
+          <h3>Напишите мне</h3>
+          <p>В Telegram, WhatsApp или на почту — парой фраз о том, с чем хотите прийти. Подробностей на этом этапе не нужно.</p>
+        </div>
+        <div class="step">
+          <div class="step__n">2</div>
+          <h3>Встреча-знакомство</h3>
+          <p>Короткий разговор, чтобы вы могли задать вопросы, а мы — вместе посмотреть, подходим ли друг другу и какой формат уместен.</p>
+        </div>
+        <div class="step">
+          <div class="step__n">3</div>
+          <h3>Регулярная работа</h3>
+          <p>Договариваемся о дне и частоте встреч. Об условиях отмены и оплате — прозрачно, на берегу.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2>Частые вопросы</h2>
+        <p>Если вашего вопроса здесь нет — напишите, отвечу лично.</p>
+      </div>
+      <div class="faq">
+        <div>
+          <h3>Онлайн работает так же, как очно?</h3>
+          <p>Да. Для людей в эмиграции это часто единственный способ работать на родном языке — и он не хуже. Нужны только устойчивый интернет и место, где вас никто не услышит.</p>
+        </div>
+        <div>
+          <h3>Сколько длится терапия?</h3>
+          <p>По-разному. С конкретной ситуацией иногда хватает нескольких месяцев; работа с тем, что складывалось годами, идёт дольше. Мы регулярно сверяемся, куда движемся.</p>
+        </div>
+        <div>
+          <h3>Что с конфиденциальностью?</h3>
+          <p>Всё, что происходит на встрече, остаётся между нами. Случаи, которые я приношу на супервизию, обсуждаются без имён и узнаваемых деталей.</p>
+        </div>
+        <div>
+          <h3>Я не знаю, как сформулировать запрос</h3>
+          <p>Это нормально и совершенно не мешает начать. Часто первое, чем мы занимаемся, — как раз поиск слов для того, что происходит.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contacts">
+    <div class="wrap cta__in">
+      <div>
+        <h2>Начать можно с одного сообщения</h2>
+        <p>Напишите удобным способом — договоримся о встрече-знакомстве. Отвечаю обычно в течение дня.</p>
+      </div>
+      <div class="cta__links">
+        <a href="https://t.me/username">Telegram <span>@username</span></a>
+        <a href="https://wa.me/48000000000">WhatsApp <span>+48 000 000 000</span></a>
+        <a href="mailto:mail@example.com">Почта <span>mail@example.com</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><b>ПАВЕЛ ДРАГУН</b>гештальт-терапевт и супервизор · Варшава / онлайн</div>
+    <div>© 2026 · Политика конфиденциальности</div>
+  </div>
+</footer>
+</body>
+</html>
